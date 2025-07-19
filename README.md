@@ -1,5 +1,5 @@
 # gopro_on_sslvision
-A script to use a GoPro HERO 10 Black as a webcam on linux and with compability for SSL-Vision
+A script to use a GoPro HERO 10 Black as a webcam on linux and with compability for [SSL-Vision](https://github.com/RoboCup-SSL/ssl-vision) on the RoboCup SSL competition.
 
 First, to install:
 
@@ -18,6 +18,7 @@ Second, starts the gopro as webcam:
 Finally, starts the capture(1080p or 720p):
 
 	./capture_1080p.sh
+ 
  	./capture_720p.sh
 
 Credits to [jschmid1](https://github.com/jschmid1/gopro_as_webcam_on_linux?tab=readme-ov-file)
