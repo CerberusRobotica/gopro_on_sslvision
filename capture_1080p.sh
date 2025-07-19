@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo "Loading the module with new camera parameters"
+
+sudo modprobe -r v4l2loopback
+
+sudo modprobe v4l2loopback \
+video_nr=2 \
+exclusive_caps=1 \
+max_buffers=4 \
+card_label="GoPro_YUYV" \
+format=YUYV
+
+echo "Starting the capture in 1080p.🚀🐺"
+
+ffmpeg -nostdin -i 'udp://@0.0.0.0:8554?overrun_nonfatal=1&fifo_size=50000000' \
+-vf "format=yuyv422" \
+-pix_fmt yuyv422 \
+-f v4l2 -vcodec rawvideo \
+-fflags nobuffer \
+-flags low_delay \
+-probesize 32 \
+-analyzeduration 0 \
+/dev/video2
